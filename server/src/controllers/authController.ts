@@ -77,12 +77,12 @@ export const register = async (
       return;
     }
 
-    const user = await registerUser({
-      name: trimmedName,
-      email: normalizedEmail,
-      password,
-    });
-
+  const { user, accessToken } = await registerUser({
+  name: trimmedName,
+  email: normalizedEmail,
+  password,
+});
+res.cookie("accessToken", accessToken, getCookieOptions());
     res.status(201).json({
       success: true,
       message: "User registered successfully.",

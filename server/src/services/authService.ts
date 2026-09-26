@@ -14,7 +14,7 @@ interface LoginInput {
   password: string;
 }
 
-interface LoginResult {
+interface AuthResult {
   user: IUser;
   accessToken: string;
 }
@@ -23,7 +23,7 @@ export const registerUser = async ({
   name,
   email,
   password,
-}: RegisterInput): Promise<IUser> => {
+}: RegisterInput): Promise<AuthResult> => {
   const normalizedEmail = email.trim().toLowerCase();
 
   const existingUser = await User.findOne({
@@ -46,13 +46,18 @@ export const registerUser = async ({
     password: hashedPassword,
   });
 
-  return user;
+const accessToken = generateAccessToken(user._id.toString());
+
+return {
+  user,
+  accessToken,
+};
 };
 
 export const loginUser = async ({
   email,
   password,
-}: LoginInput): Promise<LoginResult> => {
+}: LoginInput): Promise<AuthResult> => {
   const normalizedEmail = email.trim().toLowerCase();
 
   const user = await User.findOne({

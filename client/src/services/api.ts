@@ -16,12 +16,13 @@ const request = async <T>(
 
   const data = await response.json();
 
-  if (!response.ok) {
-    throw new Error(
-      data?.error?.message || "An unexpected error occurred."
-    );
-  }
-
+ if (!response.ok) {
+  throw new Error(
+    data?.error?.message ||
+      data?.message ||
+      "An unexpected error occurred."
+  );
+}
   return data as T;
 };
 

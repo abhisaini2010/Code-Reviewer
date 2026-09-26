@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://code-reviewer-frontend-7s0w.onrender.com",
     credentials: true,
   })
 );

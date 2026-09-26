@@ -40,7 +40,7 @@ import {
 import { memoryCache } from "../utils/cache";
 import mongoose from "mongoose";
 const getClientUrl = (): string => {
-  return process.env.CLIENT_URL || "http://localhost:5173";
+  return process.env.CLIENT_URL || "https://code-reviewer-frontend-7s0w.onrender.com";
 };
 
 export const connectGitHub = (

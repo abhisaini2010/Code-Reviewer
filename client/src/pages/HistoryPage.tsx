@@ -91,17 +91,7 @@ const { user, logout } = useAuth();
     return "text-rose-600";
   };
 
-  const getScoreRingClass = (score: number) => {
-    if (score >= 80) {
-      return "text-emerald-500";
-    }
-
-    if (score >= 60) {
-      return "text-amber-500";
-    }
-
-    return "text-rose-500";
-  };
+ 
 
   const formatDate = (date: string) => {
     return new Date(date).toLocaleString("en-US", {
@@ -255,11 +245,7 @@ const { user, logout } = useAuth();
     setExpandedId(null);
   };
 
-  const toggleDetails = (id: string) => {
-    setExpandedId((current) =>
-      current === id ? null : id
-    );
-  };
+ 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50/40">

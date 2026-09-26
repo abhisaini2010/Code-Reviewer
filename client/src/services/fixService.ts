@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./api";
 type ReviewLanguage =
   | "javascript"
   | "typescript"
@@ -43,7 +44,7 @@ export const fixCode = async (
   action: FixAction
 ): Promise<FixResponse> => {
   const response = await fetch(
-    "http://localhost:5000/api/v1/reviews/fix",
+    `${API_BASE_URL}/reviews/fix`,
     {
       method: "POST",
       credentials: "include",

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./api";
 export interface GitHubRepository {
   id: number;
   name: string;
@@ -155,7 +156,7 @@ const getErrorMessage = (
 export const getGitHubRepositories =
   async (): Promise<GitHubRepository[]> => {
     const response = await fetch(
-      "http://localhost:5000/api/v1/github/repositories",
+      `${API_BASE_URL}/github/repositories`,
       {
         method: "GET",
         credentials: "include",
@@ -180,7 +181,7 @@ export const getGitHubBranches = async (
   repository: string
 ): Promise<GitHubBranch[]> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/${encodeURIComponent(
       owner
     )}/${encodeURIComponent(repository)}/branches`,
     {
@@ -203,7 +204,7 @@ export const getGitHubBranches = async (
 };
 
 export const getGitHubConnectUrl = (): string => {
-  return "http://localhost:5000/api/v1/github/connect";
+  return `${API_BASE_URL}/github/connect`;
 };
 
 
@@ -213,7 +214,7 @@ export const getGitHubRepositoryTree = async (
   branch: string
 ): Promise<GitHubRepositoryTree> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/${encodeURIComponent(
       owner
     )}/${encodeURIComponent(
       repository
@@ -244,7 +245,7 @@ export const startGitHubRepositoryIndex = async (
   branch: string
 ): Promise<RepositoryIndexResult> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/${encodeURIComponent(
       owner
     )}/${encodeURIComponent(repository)}/index`,
     {
@@ -284,7 +285,7 @@ export const getGitHubRepositoryIndexStatus = async (
   indexId: string
 ): Promise<GitHubRepositoryIndexStatus> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}`,
     {
@@ -312,7 +313,7 @@ export const getGitHubRepositoryIndexFiles = async (
   indexId: string
 ): Promise<GitHubRepositoryIndexFile[]> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}/files`,
     {
@@ -338,7 +339,7 @@ export const getGitHubRepositoryIndexFile = async (
   fileId: string
 ): Promise<GitHubRepositoryIndexFileDetail> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}/files/${encodeURIComponent(fileId)}`,
     {

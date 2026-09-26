@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "./api";
+
 export type ReviewLanguage =
   | "javascript"
   | "typescript"
@@ -33,8 +35,6 @@ export interface ReviewResponse {
   message: string;
   review: CodeReviewResult;
 }
-
-const API_BASE_URL = "http://localhost:5000/api/v1";
 
 export const reviewCode = async (
   code: string,

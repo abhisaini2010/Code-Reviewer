@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./api";
 export interface GitHubRepositoryReviewResponse {
   success: boolean;
   message: string;
@@ -87,7 +88,7 @@ export const reviewGitHubRepository = async (
   indexId: string
 ): Promise<GitHubRepositoryReviewResponse> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}/review`,
     {

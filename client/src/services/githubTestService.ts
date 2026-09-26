@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./api";
 
 export interface GitHubRepositoryTestGenerationResponse {
   success: boolean;
@@ -22,7 +23,7 @@ export const generateGitHubRepositoryTests = async (
   fileId: string
 ): Promise<GitHubRepositoryTestGenerationResponse> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}/files/${encodeURIComponent(fileId)}/tests`,
     {

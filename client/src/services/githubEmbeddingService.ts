@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./api";
 export interface GitHubEmbeddingSearchResult {
   id: string;
   repositoryFileId: string;
@@ -22,7 +23,7 @@ export const searchGitHubRepositoryEmbeddings = async (
   limit = 5
 ): Promise<GitHubEmbeddingSearchResponse> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}/embeddings/search`,
     {

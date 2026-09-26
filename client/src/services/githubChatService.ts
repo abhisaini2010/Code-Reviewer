@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./api";
 export interface GitHubRepositoryChatResponse {
   success: boolean;
   message: string;
@@ -13,7 +14,7 @@ export const chatWithGitHubRepository = async (
   query: string
 ): Promise<GitHubRepositoryChatResponse> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}/chat`,
     {

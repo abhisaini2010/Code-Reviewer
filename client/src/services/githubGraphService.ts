@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "./api";
 export interface GitHubRepositoryIndexGraphNode {
   id: string;
   path: string;
@@ -49,7 +50,7 @@ export const getGitHubRepositoryIndexGraph = async (
   indexId: string
 ): Promise<GitHubRepositoryIndexGraph> => {
   const response = await fetch(
-    `http://localhost:5000/api/v1/github/repositories/index/${encodeURIComponent(
+    `${API_BASE_URL}/github/repositories/index/${encodeURIComponent(
       indexId
     )}/graph`,
     {

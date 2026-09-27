@@ -140,14 +140,15 @@ export const createGitHubOAuthData = (
   const callbackUrl = getRequiredEnv("GITHUB_CALLBACK_URL");
 
   const params = new URLSearchParams({
-    client_id: clientId,
-    redirect_uri: callbackUrl,
-    response_type: "code",
-    scope: "repo read:user offline_access",
-    state,
-    code_challenge: codeChallenge,
-    code_challenge_method: "S256",
-  });
+  client_id: clientId,
+  redirect_uri: callbackUrl,
+  response_type: "code",
+  scope: "repo read:user offline_access",
+  state,
+  code_challenge: codeChallenge,
+  code_challenge_method: "S256",
+  prompt: "select_account",
+});
 
   const authorizationUrl =
     `${GITHUB_OAUTH_URL}?${params.toString()}`;
